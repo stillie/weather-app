@@ -26,3 +26,7 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 .vscode
+
+# Environment File with private keys
+.env
+env.g.dart
