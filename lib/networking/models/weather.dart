@@ -18,11 +18,11 @@ class Weather {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['main'] = main;
-    _data['description'] = description;
-    _data['icon'] = icon;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['main'] = main;
+    data['description'] = description;
+    data['icon'] = icon;
+    return data;
   }
 }

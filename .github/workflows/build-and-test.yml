@@ -14,8 +14,13 @@ jobs:
         with:
           channel: stable
           flutter-version: 3.19.3
+      - name: Configure .env file
         env:
-          WEATHER: ${{ secrets.WEATHER }}
+          WEATHER: ${{ vars.WEATHER }}
+        run: |
+          set -e
+          mv example.env .env
+          sed -i '' "s#WEATHER=.*#WEATHER=$WEATHER#" .env
       - run: flutter pub get
       - run: dart run build_runner build -d
       - run: flutter test

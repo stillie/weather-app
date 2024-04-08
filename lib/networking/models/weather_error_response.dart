@@ -12,9 +12,9 @@ class WeatherErrorResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['cod'] = cod;
-    _data['message'] = message;
-    return _data;
+    final data = <String, dynamic>{};
+    data['cod'] = cod;
+    data['message'] = message;
+    return data;
   }
 }

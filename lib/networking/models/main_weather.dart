@@ -31,15 +31,15 @@ class WeatherMain {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['temp'] = temp;
-    _data['feels_like'] = feelsLike;
-    _data['temp_min'] = tempMin;
-    _data['temp_max'] = tempMax;
-    _data['pressure'] = pressure;
-    _data['humidity'] = humidity;
-    _data['sea_level'] = seaLevel;
-    _data['grnd_level'] = grndLevel;
-    return _data;
+    final data = <String, dynamic>{};
+    data['temp'] = temp;
+    data['feels_like'] = feelsLike;
+    data['temp_min'] = tempMin;
+    data['temp_max'] = tempMax;
+    data['pressure'] = pressure;
+    data['humidity'] = humidity;
+    data['sea_level'] = seaLevel;
+    data['grnd_level'] = grndLevel;
+    return data;
   }
 }

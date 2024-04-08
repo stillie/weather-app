@@ -49,19 +49,19 @@ class WeatherModel {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['coord'] = coord.toJson();
-    _data['weather'] = weather.map((e) => e.toJson()).toList();
-    _data['base'] = base;
-    _data['main'] = main.toJson();
-    _data['visibility'] = visibility;
-    _data['wind'] = wind.toJson();
-    _data['clouds'] = clouds.toJson();
-    _data['dt'] = dt;
-    _data['timezone'] = timezone;
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['cod'] = cod;
-    return _data;
+    final data = <String, dynamic>{};
+    data['coord'] = coord.toJson();
+    data['weather'] = weather.map((e) => e.toJson()).toList();
+    data['base'] = base;
+    data['main'] = main.toJson();
+    data['visibility'] = visibility;
+    data['wind'] = wind.toJson();
+    data['clouds'] = clouds.toJson();
+    data['dt'] = dt;
+    data['timezone'] = timezone;
+    data['id'] = id;
+    data['name'] = name;
+    data['cod'] = cod;
+    return data;
   }
 }

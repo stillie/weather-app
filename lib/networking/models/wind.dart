@@ -15,10 +15,10 @@ class Wind {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['speed'] = speed;
-    _data['deg'] = deg;
-    _data['gust'] = gust;
-    return _data;
+    final data = <String, dynamic>{};
+    data['speed'] = speed;
+    data['deg'] = deg;
+    data['gust'] = gust;
+    return data;
   }
 }

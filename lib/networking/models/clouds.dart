@@ -9,8 +9,8 @@ class Clouds {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['all'] = all;
-    return _data;
+    final data = <String, dynamic>{};
+    data['all'] = all;
+    return data;
   }
 }
