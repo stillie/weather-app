@@ -11,7 +11,11 @@ class WeatherRepository extends ChangeNotifier {
 
   void getWeatherForCurrentLocation(double lat, double lon) async {
     try {
-      currentWeather = await _apiClient.fetchCurrentWeather(lat, lon);
+      currentWeather = await _apiClient.fetchCurrentWeather(
+        lat,
+        lon,
+        useDummyData: true,
+      );
     } catch (error) {
       throw WeatherRequestFailure();
     } finally {

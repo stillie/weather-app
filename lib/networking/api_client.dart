@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:weatherapp/environment/env.dart';
 import 'package:weatherapp/networking/exceptions/weather_api_key_failure.dart';
@@ -17,8 +16,8 @@ class ApiClient {
       : _httpClient = httpClient ?? http.Client();
 
   Future<WeatherModel> fetchCurrentWeather(double lat, double lon,
-      {String units = "metric"}) async {
-    if (kDebugMode) {
+      {String units = "metric", bool useDummyData = false}) async {
+    if (useDummyData) {
       return WeatherModel.fromJson(jsonDecode(dummyJson));
     }
     if (!NetworkingUtils.apiKeyIsValid()) {

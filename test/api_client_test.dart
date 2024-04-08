@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
@@ -42,7 +43,16 @@ void main() {
 
       try {
         await apiClient.fetchCurrentWeather(lat, lon);
-      } catch (_) {}
+      } on WeatherRequestFailure catch (error) {
+        if (kDebugMode) {
+          print(
+              "WeatherRequestFailure :${error.apiMessage}\n ${error.displayMessage}");
+        }
+      } catch (_) {
+        if (kDebugMode) {
+          print("Error :$_");
+        }
+      }
 
       verify(
         () => httpClient.get(
@@ -53,6 +63,7 @@ void main() {
               'lat': '$lat',
               'lon': '$lon',
               'appid': Env.WEATHER,
+              'units': "metric"
             },
           ),
         ),
