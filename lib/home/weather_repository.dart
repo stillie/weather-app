@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:weatherapp/networking/api_client.dart';
+import 'package:weatherapp/networking/exceptions/weather_request_failure.dart';
 import 'package:weatherapp/networking/models/weather_model.dart';
 
 class WeatherRepository extends ChangeNotifier {
@@ -14,7 +13,7 @@ class WeatherRepository extends ChangeNotifier {
     try {
       currentWeather = await _apiClient.fetchCurrentWeather(lat, lon);
     } catch (error) {
-      return Future.value("Some error");
+      throw WeatherRequestFailure();
     } finally {
       notifyListeners();
     }

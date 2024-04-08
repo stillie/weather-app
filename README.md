@@ -1,5 +1,21 @@
 # weather-app
+### Supported Platforms
+ - Linux
+ - Android
+ - iOS (Not confirmed)
+ - Windows (Not confirmed)
 
+## Setup process
+### Note: Ensure you are running Flutter version 3.19.0
+1. Aquire an [OpenWeatherMap](https://openweathermap.org/current) API Key
+2. Create a .env file in the root directory by renaming `example.env` to `.env` and update the value to reflect the API key from [OpenWeatherMap](https://openweathermap.org/current)
+3. Run the following commands to update project with the required environment variables:
+
+`dart run build_runner clean`
+
+`dart run build_runner build --delete-conflicting-outputs`
+
+4. To run the tests run `flutter test` 
 
 # Rules
 

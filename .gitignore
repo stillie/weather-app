@@ -5,7 +5,7 @@
 .packages
 build/
 # If you're building an application, you may want to check-in your pubspec.lock
-pubspec.lock
+# pubspec.lock
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
@@ -25,8 +25,9 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
-.vscode
 
 # Environment File with private keys
-.env
 env.g.dart
+
+# don't check in golden failure output
+**/failures/*.png

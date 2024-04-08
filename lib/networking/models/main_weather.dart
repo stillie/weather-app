@@ -1,4 +1,3 @@
-
 class WeatherMain {
   WeatherMain({
     required this.temp,
@@ -18,12 +17,12 @@ class WeatherMain {
   late final int humidity;
   late final int seaLevel;
   late final int grndLevel;
-  
-  WeatherMain.fromJson(Map<String, dynamic> json){
-    temp = json['temp'];
-    feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
+
+  WeatherMain.fromJson(Map<String, dynamic> json) {
+    temp = double.parse(json['temp'].toString());
+    feelsLike = double.parse(json['feels_like'].toString());
+    tempMin = double.parse(json['temp_min'].toString());
+    tempMax = double.parse(json['temp_max'].toString());
     pressure = json['pressure'];
     humidity = json['humidity'];
     seaLevel = json['sea_level'];
