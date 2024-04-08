@@ -20,7 +20,7 @@ jobs:
         run: |
           set -e
           mv example.env .env
-          sed -i '' "s#WEATHER=.*#WEATHER=$WEATHER#" .env
+          sed -i '' "s#WEATHER=.*WEATHER=$WEATHER#" .env
       - run: flutter pub get
       - run: dart run build_runner build -d
       - run: flutter test
