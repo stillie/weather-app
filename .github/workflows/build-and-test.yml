@@ -21,10 +21,16 @@ jobs:
         run: |
           set -e
           touch .env
-          echo WEATHER=${{ vars.WEATHER }} >> .env
-          cat .env
-      - run: flutter pub get
-      - run: dart run build_runner build -d
-      - run: flutter test
-      - run: flutter build apk
-      - run: flutter build appbundle
+          echo WEATHER=${{ secrets.WEATHER }} >> .env
+      - name: Setup Flutter
+        run: |
+          flutter pub get
+          dart run build_runner build -d
+      - name: Run Tests
+        run: flutter test
+      - name: Build AppBundle
+        run: flutter build appbundle
+      - name: Build APK
+        run: flutter build apk
+      - name: Clean up Env file 
+        run: rm .env
