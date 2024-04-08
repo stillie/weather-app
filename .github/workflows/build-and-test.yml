@@ -19,11 +19,11 @@ jobs:
           flutter-version: 3.19.3
       - name: Configure .env file
         env:
-          WEATHER: ${{ vars.WEATHER }}
+          WEATHER: ${{ secrets.WEATHER }}
         run: |
           set -e
           mv example.env .env
-          sed -i '' "s#WEATHER=.*WEATHER=$WEATHER#" .env
+          echo WEATHER=${{ secrets.WEATHER }} >> .env
       - run: flutter pub get
       - run: dart run build_runner build -d
       - run: flutter test
