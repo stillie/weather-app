@@ -21,7 +21,7 @@ jobs:
         run: |
           set -e
           mv example.env .env
-          echo WEATHER=${{ var.WEATHER }} >> .env
+          echo WEATHER=${{ vars.WEATHER }} >> .env
           cat .env
       - run: flutter pub get
       - run: dart run build_runner build -d
