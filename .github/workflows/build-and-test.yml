@@ -2,6 +2,9 @@ on:
   push:
     branches:
       - main
+defaults:
+  run:
+    shell: bash
 jobs: 
   build-and-test: 
     runs-on: ubuntu-latest
@@ -21,10 +24,8 @@ jobs:
           set -e
           mv example.env .env
           sed -i '' "s#WEATHER=.*WEATHER=$WEATHER#" .env
-      -name: Configure Project
-        run: flutter pub get
-        run: dart run build_runner build -d
-        run: flutter test
-      -name: Build APK/appBundle
-        run: flutter build apk
-        run: flutter build appbundle
+      - run: flutter pub get
+      - run: dart run build_runner build -d
+      - run: flutter test
+      - run: flutter build apk
+      - run: flutter build appbundle
