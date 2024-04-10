@@ -8,8 +8,7 @@ class LocationRepository extends ChangeNotifier {
   bool hasPermissions = false;
   Future<void> init() async {
     PermissionStatus permissionStatus = await locationService.hasPermission();
-    hasPermissions = permissionStatus != PermissionStatus.deniedForever &&
-        permissionStatus != PermissionStatus.denied;
+    hasPermissions = permissionStatus != PermissionStatus.deniedForever;
     if (hasPermissions) {
       final location = await locationService.getLocation();
 
