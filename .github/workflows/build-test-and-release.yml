@@ -19,7 +19,16 @@ jobs:
         with:
           channel: stable
           flutter-version: 3.19.3
-      - run: flutter pub get
+      # Create the environment file using the github secrets
+      - name: Configure .env file
+        run: |
+          set -e
+          touch .env
+          echo WEATHER=${{ secrets.WEATHER }} >> .env
+      - name: Setup Flutter
+        run: |
+          flutter pub get
+          dart run build_runner build -d
       - run: flutter test
       - run: flutter build apk --debug
       - name: Push to Releases
