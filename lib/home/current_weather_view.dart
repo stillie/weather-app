@@ -14,40 +14,46 @@ class CurrentWeatherView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image(
-          fit: BoxFit.cover,
-          image: Utils.getBackgroundImage(
-            weatherType,
+    return Container(
+      alignment: Alignment.center,
+      color: Utils.getColourFromWeatherType(
+        weatherType,
+      ),
+      child: Stack(
+        children: [
+          Image(
+            fit: BoxFit.cover,
+            image: Utils.getBackgroundImage(
+              weatherType,
+            ),
           ),
-        ),
-        Positioned.fill(
-          top: -100,
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              Utils.renderTemperature(temperature),
-              style: const TextStyle(
-                fontSize: 64,
-                color: Colors.white,
+          Positioned.fill(
+            top: -100,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                Utils.renderTemperature(temperature),
+                style: const TextStyle(
+                  fontSize: 64,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              weatherType.name.toUpperCase(),
-              style: const TextStyle(
-                fontSize: 32,
-                color: Colors.white,
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                weatherType.name.toUpperCase(),
+                style: const TextStyle(
+                  fontSize: 32,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

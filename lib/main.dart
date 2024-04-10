@@ -16,7 +16,10 @@ void main() {
               ..getWeatherForCurrentLocation(
                 -32.88741808072528,
                 17.90999181598229,
-                
+              )
+              ..getWeatherForcast(
+                -32.88741808072528,
+                17.90999181598229,
               );
           },
         ),

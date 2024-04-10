@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/constants.dart';
-import 'package:weatherapp/networking/models/weather.dart';
+import 'package:weatherapp/networking/models/forcast.dart';
 
 enum WeatherType { cloudy, rainy, sunny }
 
@@ -34,8 +34,8 @@ class Utils {
   static String renderTemperature(double temp) => "${temp.floor()}°";
 
 // See https://openweathermap.org/weather-conditions
-  static WeatherType getWeatherType(Weather weather) {
-    switch (weather.id) {
+  static WeatherType getWeatherType(int weather) {
+    switch (weather) {
       case 801:
       case 802:
       case 803:
@@ -77,6 +77,43 @@ class Utils {
       case 800:
       default:
         return WeatherType.sunny;
+    }
+  }
+
+  static AssetImage getIconFromWeather(ForecastItem weatherItem) {
+    final weatherType = getWeatherType(weatherItem.weather.first.id);
+
+    switch (weatherType) {
+      case WeatherType.cloudy:
+        return partlySunnyIcon;
+      case WeatherType.rainy:
+        return partlyRainIcon;
+      case WeatherType.sunny:
+      default:
+        return clearIcon;
+    }
+  }
+
+  static String getDayFromString(String dt) {
+    final DateTime? dateTime = DateTime.tryParse(dt);
+    if (dateTime == null) return "";
+    switch (dateTime.weekday) {
+      case 1:
+        return "Monday";
+      case 2:
+        return "Tuesday";
+      case 3:
+        return "Wednesday";
+      case 4:
+        return "Thursday";
+      case 5:
+        return "Friday";
+      case 6:
+        return "Saturday";
+      case 7:
+        return "Sunday";
+      default:
+        return "";
     }
   }
 }

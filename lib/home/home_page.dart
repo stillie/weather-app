@@ -12,23 +12,7 @@ class HomePage extends StatelessWidget {
   final WeatherRepository weatherRepository;
 
   const HomePage({super.key, required this.weatherRepository});
-  // final WeatherMain weatherMain = WeatherMain(
-  //   temp: 14.95,
-  //   feelsLike: 14.88,
-  //   tempMin: 14.95,
-  //   tempMax: 14.95,
-  //   pressure: 1014,
-  //   humidity: 91,
-  //   seaLevel: 1014,
-  //   grndLevel: 1007,
-  // );
 
-  // final Weather weather = Weather(
-  //   id: 800,
-  //   main: "Clouds",
-  //   description: "overcast clouds",
-  //   icon: "04n",
-  // );
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherRepository>(
@@ -39,25 +23,27 @@ class HomePage extends StatelessWidget {
         final WeatherModel weatherModel = repo.currentWeather!;
 
         final WeatherType weatherType =
-            Utils.getWeatherType(weatherModel.weather.first);
+            Utils.getWeatherType(weatherModel.weather.first.id);
         final WeatherMain weatherMain = weatherModel.main;
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Utils.getColourFromWeatherType(weatherType),
           ),
-          extendBodyBehindAppBar: false,
-          body: Column(
-            children: [
-              CurrentWeatherView(
-                weatherType: weatherType,
-                temperature: weatherMain.temp,
-              ),
-              CurrentTempRangeView(
-                weather: weatherMain,
-                weatherType: weatherType,
-              ),
-              const ForecastWeatherView(),
-            ],
+          body: SingleChildScrollView(
+            
+            child: Column(
+              children: [
+                CurrentWeatherView(
+                  weatherType: weatherType,
+                  temperature: weatherMain.temp,
+                ),
+                CurrentTempRangeView(
+                  weather: weatherMain,
+                  weatherType: weatherType,
+                ),
+                const ForecastWeatherView(),
+              ],
+            ),
           ),
         );
       },

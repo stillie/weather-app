@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
@@ -38,21 +37,12 @@ void main() {
         () async {
       final response = MockResponse();
       when(() => response.statusCode).thenReturn(200);
-      when(() => response.body).thenReturn('{}');
+      when(() => response.body).thenReturn(validGetCurrentWeatherResponse);
       when(() => httpClient.get(any())).thenAnswer((_) async => response);
 
       try {
         await apiClient.fetchCurrentWeather(lat, lon);
-      } on WeatherRequestFailure catch (error) {
-        if (kDebugMode) {
-          print(
-              "WeatherRequestFailure :${error.apiMessage}\n ${error.displayMessage}");
-        }
-      } catch (_) {
-        if (kDebugMode) {
-          print("Error :$_");
-        }
-      }
+      } catch (_) {}
 
       verify(
         () => httpClient.get(
