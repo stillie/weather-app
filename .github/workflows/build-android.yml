@@ -1,9 +1,10 @@
-name: Build & Test
+name: Build & Publish Release APK
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
+
 defaults:
   run:
     shell: bash
@@ -35,8 +36,9 @@ jobs:
       - name: Releasing using Hub
         uses: sangatdesai/release-apk@main
         env:
-         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-         APP_FOLDER: app
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          APP_FOLDER: build/app/outputs/flutter-apk/
         # Remove the .env for security - not needed but I feel safer managing it myself :p 
       - name: Clean up Env file 
         run: rm .env
+
