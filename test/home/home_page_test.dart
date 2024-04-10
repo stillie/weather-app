@@ -14,21 +14,48 @@ void main() {
     final builder = GoldenBuilder.grid(columns: 2, widthToHeightRatio: 1)
       ..addScenario(
           'Sunny',
-          const CurrentWeatherView(
+          CurrentWeatherView(
             weatherType: WeatherType.sunny,
-            temperature: 30,
+            weatherMain: WeatherMain(
+              temp: 14.95,
+              feelsLike: 14.88,
+              tempMin: 14.95,
+              tempMax: 14.95,
+              pressure: 1014,
+              humidity: 91,
+              seaLevel: 1014,
+              grndLevel: 1007,
+            ),
           ))
       ..addScenario(
           'Cloudy',
-          const CurrentWeatherView(
+          CurrentWeatherView(
             weatherType: WeatherType.cloudy,
-            temperature: 20,
+            weatherMain: WeatherMain(
+              temp: 14.95,
+              feelsLike: 14.88,
+              tempMin: 14.95,
+              tempMax: 14.95,
+              pressure: 1014,
+              humidity: 91,
+              seaLevel: 1014,
+              grndLevel: 1007,
+            ),
           ))
       ..addScenario(
           'Raining',
-          const CurrentWeatherView(
+          CurrentWeatherView(
             weatherType: WeatherType.rainy,
-            temperature: 15,
+            weatherMain: WeatherMain(
+              temp: 14.95,
+              feelsLike: 14.88,
+              tempMin: 14.95,
+              tempMax: 14.95,
+              pressure: 1014,
+              humidity: 91,
+              seaLevel: 1014,
+              grndLevel: 1007,
+            ),
           ));
     await tester.pumpWidgetBuilder(builder.build(),
         surfaceSize: const Size(800, 800));
@@ -147,9 +174,18 @@ void main() {
           'Cloudy',
           Column(
             children: [
-              const CurrentWeatherView(
+              CurrentWeatherView(
                 weatherType: WeatherType.cloudy,
-                temperature: 14.95,
+                weatherMain: WeatherMain(
+                  temp: 14.95,
+                  feelsLike: 14.88,
+                  tempMin: 14.95,
+                  tempMax: 14.95,
+                  pressure: 1014,
+                  humidity: 91,
+                  seaLevel: 1014,
+                  grndLevel: 1007,
+                ),
               ),
               CurrentTempRangeView(
                 weatherType: WeatherType.cloudy,
@@ -170,9 +206,18 @@ void main() {
         'Sunny',
         Column(
           children: [
-            const CurrentWeatherView(
+            CurrentWeatherView(
               weatherType: WeatherType.sunny,
-              temperature: 14.95,
+              weatherMain: WeatherMain(
+                temp: 14.95,
+                feelsLike: 14.88,
+                tempMin: 14.95,
+                tempMax: 14.95,
+                pressure: 1014,
+                humidity: 91,
+                seaLevel: 1014,
+                grndLevel: 1007,
+              ),
             ),
             CurrentTempRangeView(
               weatherType: WeatherType.sunny,
@@ -194,9 +239,18 @@ void main() {
         'Rainy',
         Column(
           children: [
-            const CurrentWeatherView(
+            CurrentWeatherView(
               weatherType: WeatherType.rainy,
-              temperature: 14.95,
+              weatherMain: WeatherMain(
+                temp: 14.95,
+                feelsLike: 14.88,
+                tempMin: 14.95,
+                tempMax: 14.95,
+                pressure: 1014,
+                humidity: 91,
+                seaLevel: 1014,
+                grndLevel: 1007,
+              ),
             ),
             CurrentTempRangeView(
               weatherType: WeatherType.rainy,
@@ -251,10 +305,7 @@ void main() {
                 ),
                 weather: [
                   Weather(
-                      id: 800,
-                      main: "Clear",
-                      description: "clear",
-                      icon: "03d")
+                      id: 800, main: "Clear", description: "clear", icon: "03d")
                 ],
                 clouds: Clouds(all: 38),
                 wind: Wind(speed: 10.86, deg: 149, gust: 15.77),
@@ -277,11 +328,7 @@ void main() {
                 humidity: 81,
               ),
               weather: [
-                Weather(
-                    id: 300,
-                    main: "Rain",
-                    description: "rain",
-                    icon: "03d")
+                Weather(id: 300, main: "Rain", description: "rain", icon: "03d")
               ],
               clouds: Clouds(all: 38),
               wind: Wind(speed: 10.86, deg: 149, gust: 15.77),

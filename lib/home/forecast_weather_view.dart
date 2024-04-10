@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp/home/forcase_list_item.dart';
-import 'package:weatherapp/home/weather_repository.dart';
-import 'package:weatherapp/networking/models/forcast.dart';
+import 'package:weatherapp/home/forecast_weather_repository.dart';
 
 class ForecastWeatherView extends StatelessWidget {
   const ForecastWeatherView({
@@ -10,37 +9,25 @@ class ForecastWeatherView extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Consumer<WeatherRepository>(
-      builder: (BuildContext context, WeatherRepository value, Widget? child) {
-        if (value.forcastWeather == null) {
+    return Consumer<ForecastWeatherRepository>(
+      builder: (
+        BuildContext context,
+        ForecastWeatherRepository repo,
+        Widget? child,
+      ) {
+        if (repo.forcastWeather == null) {
           return const CircularProgressIndicator();
         }
-        final Forecast weather = value.forcastWeather!;
-        // return Column(
-        //   crossAxisAlignment: CrossAxisAlignment.stretch,
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   mainAxisSize: MainAxisSize.min,
-        //   children: [
-        //     ...weather.forecastItem.map(
-        //       (item) => ForcaseListItem(
-        //         weatherItem: item,
-        //       ),
-        //     ),
-        //   ],
-        // );
-        final List<ForecastItem> filteredItems = [];
-        for (var i = 0; i < weather.forecastItem.length; i+=8) {
-          filteredItems.add(weather.forecastItem[i]);
-        }
+
         return Container(
-          decoration: BoxDecoration(color: Colors.blue),
+          decoration: const BoxDecoration(color: Colors.blue),
           child: ListView.builder(
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: filteredItems.length,
+            itemCount: repo.filteredItems.length,
             itemBuilder: (context, index) {
               return ForcaseListItem(
-                weatherItem: filteredItems[index],
+                weatherItem: repo.filteredItems[index],
               );
             },
           ),

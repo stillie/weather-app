@@ -39,7 +39,7 @@ dependencies:
   http: ^1.2.1
   envied: ^0.5.4+1 # For retrieving data from an environment file
   google_fonts: ^6.2.1
-  golden_toolkit: ^0.15.0
+  location: ^5.0.0
   
 
 dev_dependencies:
@@ -55,6 +55,7 @@ dev_dependencies:
   envied_generator: ^0.5.4+1
   build_runner: ^2.4.9
   mocktail: ^1.0.3
+  golden_toolkit: ^0.15.0
   
 
 # For information on the generic Dart part of this file, see the
