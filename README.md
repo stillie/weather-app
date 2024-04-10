@@ -28,11 +28,11 @@
 - [X] Please do not perform dependency override
 - [X] The architectures options are: Bloc, Cubit and Provider + ChangeNotifier/StateNotifier
 - [X] If you use Bloc or Cubit as your architecture, please use flutter_bloc or your custom solution
-- [ ] Please provide a comprehensive ReadME which contains:
+- [X] Please provide a comprehensive ReadME which contains:
     - [X] Conventions, architecture, and general considerations
     - [X] Exhaustive list of third-parties alongside their respective purposes
     - [X] How to build the project
-    - [ ] Any additional notes that can demonstrate your knowledge
+    - [X] Any additional notes that can demonstrate your knowledge
 
 * 7 Days to complete
 
@@ -68,3 +68,4 @@ Dev Dependencies:
 - I wanted to improve the visual aspect of a loading indicator
 - I made some changes to the colours given in the documentation due to the fact that it didnt quite match up to the style of the image (for the sunny screenshot)
 - I have implemented GitHub actions which will run the tests and then build the app. It won't build the app if any of the tests have failed.
+- When a change is made on the 'Release' branch. A github Action is executed which builds that APK and publishes it to the [Releases](https://github.com/stillie/weather-app/releases) page of the repo. You are able to download the files from there.
