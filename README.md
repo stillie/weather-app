@@ -1,9 +1,7 @@
 # weather-app
 ### Supported Platforms
- - Linux
  - Android
  - iOS (Not confirmed)
- - Windows (Not confirmed)
 
 ## Setup process
 ### Note: Ensure you are running Flutter version 3.19.0
@@ -69,3 +67,4 @@ Dev Dependencies:
 - I wanted to implement better error handling. I started implementing it for the location errors but didn't have enough time to complete that
 - I wanted to improve the visual aspect of a loading indicator
 - I made some changes to the colours given in the documentation due to the fact that it didnt quite match up to the style of the image (for the sunny screenshot)
+- I have implemented GitHub actions which will run the tests and then build the app. It won't build the app if any of the tests have failed.
