@@ -237,109 +237,84 @@ void main() {
       ..addScenario(
         'Clear',
         ForcaseListItem(
-          weatherItem: ForecastItem(
-            dt: 1712656800,
-            sunrise: 1712639145,
-            sunset: 1712680412,
-            temp: Temp(
-                day: 16.61,
-                min: 14.29,
-                max: 30.65,
-                night: 14.69,
-                eve: 19.8,
-                morn: 14.36),
-            feelsLike: FeelsLike(
-              day: 16.42,
-              night: 14.62,
-              eve: 20.13,
-              morn: 14.04,
-            ),
-            pressure: 1017,
-            humidity: 80,
-            weather: [
-              Weather(
-                  id: 800,
-                  main: "Clear",
-                  description: "sky is clear",
-                  icon: "01d")
-            ],
-            speed: 10.37,
-            deg: 171,
-            gust: 16.39,
-            clouds: 6,
-          ),
-        ),
+            weatherItem: ForecastItem(
+                dt: 1712750400,
+                main: Main(
+                  temp: 16.13,
+                  feelsLike: 15.91,
+                  tempMin: 16.13,
+                  tempMax: 16.36,
+                  pressure: 1022,
+                  seaLevel: 1022,
+                  grndLevel: 1021,
+                  humidity: 81,
+                ),
+                weather: [
+                  Weather(
+                      id: 800,
+                      main: "Clear",
+                      description: "clear",
+                      icon: "03d")
+                ],
+                clouds: Clouds(all: 38),
+                wind: Wind(speed: 10.86, deg: 149, gust: 15.77),
+                visibility: 10000,
+                dtTxt: "2024-04-10 12:00:00")),
       )
       ..addScenario(
         'Rain',
         ForcaseListItem(
           weatherItem: ForecastItem(
-            dt: 1712656800,
-            sunrise: 1712639145,
-            sunset: 1712680412,
-            temp: Temp(
-                day: 16.61,
-                min: 14.29,
-                max: 30.65,
-                night: 14.69,
-                eve: 19.8,
-                morn: 14.36),
-            feelsLike: FeelsLike(
-              day: 16.42,
-              night: 14.62,
-              eve: 20.13,
-              morn: 14.04,
-            ),
-            pressure: 1017,
-            humidity: 80,
-            weather: [
-              Weather(
-                  id: 800,
-                  main: "Clear",
-                  description: "sky is clear",
-                  icon: "01d")
-            ],
-            speed: 10.37,
-            deg: 171,
-            gust: 16.39,
-            clouds: 6,
-          ),
+              dt: 1712750400,
+              main: Main(
+                temp: 16.13,
+                feelsLike: 15.91,
+                tempMin: 16.13,
+                tempMax: 16.36,
+                pressure: 1022,
+                seaLevel: 1022,
+                grndLevel: 1021,
+                humidity: 81,
+              ),
+              weather: [
+                Weather(
+                    id: 300,
+                    main: "Rain",
+                    description: "rain",
+                    icon: "03d")
+              ],
+              clouds: Clouds(all: 38),
+              wind: Wind(speed: 10.86, deg: 149, gust: 15.77),
+              visibility: 10000,
+              dtTxt: "2024-04-10 12:00:00"),
         ),
       )
       ..addScenario(
         'Cloudy',
         ForcaseListItem(
           weatherItem: ForecastItem(
-            dt: 1712656800,
-            sunrise: 1712639145,
-            sunset: 1712680412,
-            temp: Temp(
-                day: 16.61,
-                min: 14.29,
-                max: 30.65,
-                night: 14.69,
-                eve: 19.8,
-                morn: 14.36),
-            feelsLike: FeelsLike(
-              day: 16.42,
-              night: 14.62,
-              eve: 20.13,
-              morn: 14.04,
-            ),
-            pressure: 1017,
-            humidity: 80,
-            weather: [
-              Weather(
-                  id: 800,
-                  main: "Clear",
-                  description: "sky is clear",
-                  icon: "01d")
-            ],
-            speed: 10.37,
-            deg: 171,
-            gust: 16.39,
-            clouds: 6,
-          ),
+              dt: 1712750400,
+              main: Main(
+                temp: 16.13,
+                feelsLike: 15.91,
+                tempMin: 16.13,
+                tempMax: 16.36,
+                pressure: 1022,
+                seaLevel: 1022,
+                grndLevel: 1021,
+                humidity: 81,
+              ),
+              weather: [
+                Weather(
+                    id: 802,
+                    main: "Clouds",
+                    description: "scattered clouds",
+                    icon: "03d")
+              ],
+              clouds: Clouds(all: 38),
+              wind: Wind(speed: 10.86, deg: 149, gust: 15.77),
+              visibility: 10000,
+              dtTxt: "2024-04-10 12:00:00"),
         ),
       );
     await tester.pumpWidgetBuilder(
@@ -353,38 +328,3 @@ void main() {
     await screenMatchesGolden(tester, 'forcast_list_item');
   });
 }
-
-// {
-//             "dt": 1712656800,
-//             "sunrise": 1712639145,
-//             "sunset": 1712680412,
-//             "temp": {
-//                 "day": 16.61,
-//                 "min": 14.29,
-//                 "max": 20.86,
-//                 "night": 14.69,
-//                 "eve": 19.8,
-//                 "morn": 14.36
-//             },
-//             "feels_like": {
-//                 "day": 16.42,
-//                 "night": 14.62,
-//                 "eve": 20.13,
-//                 "morn": 14.04
-//             },
-//             "pressure": 1017,
-//             "humidity": 80,
-//             "weather": [
-//                 {
-//                     "id": 800,
-//                     "main": "Clear",
-//                     "description": "sky is clear",
-//                     "icon": "01d"
-//                 }
-//             ],
-//             "speed": 10.37,
-//             "deg": 171,
-//             "gust": 16.39,
-//             "clouds": 7,
-//             "pop": 0.03
-//         },
