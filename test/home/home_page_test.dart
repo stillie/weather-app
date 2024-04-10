@@ -11,7 +11,7 @@ import 'package:weatherapp/utils.dart';
 
 void main() {
   testGoldens('Current Weather types should look correct', (tester) async {
-    final builder = GoldenBuilder.grid(columns: 2, widthToHeightRatio: 1)
+    final builderColumn = GoldenBuilder.column()
       ..addScenario(
           'Sunny',
           CurrentWeatherView(
@@ -57,9 +57,10 @@ void main() {
               grndLevel: 1007,
             ),
           ));
-    await tester.pumpWidgetBuilder(builder.build(),
-        surfaceSize: const Size(800, 800));
-    await screenMatchesGolden(tester, 'current_weather_types_grid');
+
+    await tester.pumpWidgetBuilder(builderColumn.build(),
+        surfaceSize: const Size(400, 1300));
+    await screenMatchesGolden(tester, 'current_weather_types');
   });
 
   testGoldens('Temperature Range Items looks correct', (tester) async {
@@ -164,120 +165,6 @@ void main() {
     );
 
     await screenMatchesGolden(tester, 'temperature_range_row');
-  });
-
-  testGoldens('Current weather widgets look correct combined', (tester) async {
-    final builder = GoldenBuilder.column(
-      wrap: (widget) => widget,
-    )
-      ..addScenario(
-          'Cloudy',
-          Column(
-            children: [
-              CurrentWeatherView(
-                weatherType: WeatherType.cloudy,
-                weatherMain: WeatherMain(
-                  temp: 14.95,
-                  feelsLike: 14.88,
-                  tempMin: 14.95,
-                  tempMax: 14.95,
-                  pressure: 1014,
-                  humidity: 91,
-                  seaLevel: 1014,
-                  grndLevel: 1007,
-                ),
-              ),
-              CurrentTempRangeView(
-                weatherType: WeatherType.cloudy,
-                weather: WeatherMain(
-                  temp: 14.95,
-                  feelsLike: 14.88,
-                  tempMin: 14.95,
-                  tempMax: 14.95,
-                  pressure: 1014,
-                  humidity: 91,
-                  seaLevel: 1014,
-                  grndLevel: 1007,
-                ),
-              ),
-            ],
-          ))
-      ..addScenario(
-        'Sunny',
-        Column(
-          children: [
-            CurrentWeatherView(
-              weatherType: WeatherType.sunny,
-              weatherMain: WeatherMain(
-                temp: 14.95,
-                feelsLike: 14.88,
-                tempMin: 14.95,
-                tempMax: 14.95,
-                pressure: 1014,
-                humidity: 91,
-                seaLevel: 1014,
-                grndLevel: 1007,
-              ),
-            ),
-            CurrentTempRangeView(
-              weatherType: WeatherType.sunny,
-              weather: WeatherMain(
-                temp: 14.95,
-                feelsLike: 14.88,
-                tempMin: 14.95,
-                tempMax: 14.95,
-                pressure: 1014,
-                humidity: 91,
-                seaLevel: 1014,
-                grndLevel: 1007,
-              ),
-            ),
-          ],
-        ),
-      )
-      ..addScenario(
-        'Rainy',
-        Column(
-          children: [
-            CurrentWeatherView(
-              weatherType: WeatherType.rainy,
-              weatherMain: WeatherMain(
-                temp: 14.95,
-                feelsLike: 14.88,
-                tempMin: 14.95,
-                tempMax: 14.95,
-                pressure: 1014,
-                humidity: 91,
-                seaLevel: 1014,
-                grndLevel: 1007,
-              ),
-            ),
-            CurrentTempRangeView(
-              weatherType: WeatherType.rainy,
-              weather: WeatherMain(
-                temp: 14.95,
-                feelsLike: 14.88,
-                tempMin: 14.95,
-                tempMax: 14.95,
-                pressure: 1014,
-                humidity: 91,
-                seaLevel: 1014,
-                grndLevel: 1007,
-              ),
-            ),
-          ],
-        ),
-      );
-    await tester.pumpWidgetBuilder(
-      builder.build(),
-      surfaceSize: const Size(
-        400,
-        1300,
-      ),
-    );
-
-    await screenMatchesGolden(
-        tester, 'current_temp_widgets_look_correct_together');
   });
 
   testGoldens('Forcast list widgets look correct', (tester) async {
