@@ -1,3 +1,5 @@
+import 'package:weatherapp/utils.dart';
+
 class Forecast {
   Forecast({
     required this.cnt,
@@ -87,10 +89,10 @@ class Main {
   late final int humidity;
 
   Main.fromJson(Map<String, dynamic> json) {
-    temp = json['temp'] + 0.0;
-    feelsLike = json['feels_like'] + 0.0;
-    tempMin = json['temp_min'] + 0.0;
-    tempMax = json['temp_max'] + 0.0;
+    temp = Utils.getDoubleFromApiResponse(json['temp']);
+    feelsLike = Utils.getDoubleFromApiResponse(json['feels_like']);
+    tempMin = Utils.getDoubleFromApiResponse(json['temp_min']);
+    tempMax = Utils.getDoubleFromApiResponse(json['temp_max']);
     pressure = json['pressure'];
     seaLevel = json['sea_level'];
     grndLevel = json['grnd_level'];
@@ -168,9 +170,9 @@ class Wind {
   late final double gust;
 
   Wind.fromJson(Map<String, dynamic> json) {
-    speed = json['speed'];
+    speed = Utils.getDoubleFromApiResponse(json['speed']);
     deg = json['deg'];
-    gust = json['gust'];
+    gust = Utils.getDoubleFromApiResponse(json['gust']);
   }
 
   Map<String, dynamic> toJson() {
@@ -232,8 +234,8 @@ class Coord {
   late final double lon;
 
   Coord.fromJson(Map<String, dynamic> json) {
-    lat = json['lat'];
-    lon = json['lon'];
+    lat = Utils.getDoubleFromApiResponse(json['lat']);
+    lon = Utils.getDoubleFromApiResponse(json['lon']);
   }
 
   Map<String, dynamic> toJson() {

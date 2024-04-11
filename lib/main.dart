@@ -9,39 +9,34 @@ import 'package:weatherapp/networking/api_client.dart';
 
 void main() async {
   final ApiClient apiClient = ApiClient();
-  LocationRepository locationRepository = LocationRepository();
   WidgetsFlutterBinding.ensureInitialized();
-  await locationRepository.init();
-  final lat = locationRepository.lat;
-  final lon = locationRepository.lon;
+  final LocationRepository locationRepository = LocationRepository();
+  await locationRepository.initLocationData();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<WeatherRepository>(
           create: (context) {
             WeatherRepository repository = WeatherRepository(
-              apiClient: apiClient,
-            );
+                apiClient: apiClient, locationRepo: locationRepository);
 
-            repository.getWeatherForCurrentLocation(lat!, lon!);
+            repository.getWeatherForCurrentLocation();
             return repository;
           },
         ),
         ChangeNotifierProvider<ForecastWeatherRepository>(
           create: (context) {
             ForecastWeatherRepository repository = ForecastWeatherRepository(
-              apiClient: apiClient,
-            );
+                apiClient: apiClient, locationRepo: locationRepository);
 
-            repository.getWeatherForcast(lat!, lon!);
+            repository.getWeatherForcast();
             return repository;
           },
         ),
         ChangeNotifierProvider<LocationRepository>(
           create: (context) {
-            LocationRepository repository = LocationRepository();
-            repository.init();
-            return repository;
+            return locationRepository;
           },
         )
       ],

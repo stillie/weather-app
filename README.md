@@ -69,3 +69,9 @@ Dev Dependencies:
 - I made some changes to the colours given in the documentation due to the fact that it didnt quite match up to the style of the image (for the sunny screenshot)
 - I have implemented GitHub actions which will run the tests and then build the app. It won't build the app if any of the tests have failed.
 - When a change is made on the 'Release' branch. A github Action is executed which builds that APK and publishes it to the [Releases](https://github.com/stillie/weather-app/releases) page of the repo. You are able to download the files from there.
+
+## Known Bug
+- There is a known bug that crashes the app because the android system for location has not been enabled by the time it gets here
+  Note: This only happened when running the app in release mode (-_-)
+  See: https://stackoverflow.com/questions/67663357/flutter-location-package-generates-platform-exception-on-call-to-serviceenabled
+  Affected File: https://github.com/stillie/weather-app/blob/main/lib/location/location.dart

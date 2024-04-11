@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/location/location.dart';
 import 'package:weatherapp/networking/api_client.dart';
 import 'package:weatherapp/networking/exceptions/weather_request_failure.dart';
 import 'package:weatherapp/networking/models/forcast.dart';
@@ -9,17 +10,19 @@ class ForecastWeatherRepository extends ChangeNotifier {
   Forecast? forcastWeather;
   final List<ForecastItem> filteredItems = [];
 
-  ForecastWeatherRepository({required ApiClient apiClient})
+  final LocationRepository locationRepo;
+
+  ForecastWeatherRepository(
+      {required ApiClient apiClient, required this.locationRepo})
       : _apiClient = apiClient;
 
-  void getWeatherForcast(
-    double lat,
-    double lon,
-  ) async {
+  void getWeatherForcast() async {
     try {
+      final locationData = await locationRepo.initLocationData();
+      if (locationData == null) return;
       forcastWeather = await _apiClient.fetchForcastWeather(
-        lat,
-        lon,
+        locationData.latitude ?? 0.0,
+        locationData.longitude ?? 0.0,
         useDummyData: true,
       );
       if (forcastWeather == null) throw WeatherRequestFailure();

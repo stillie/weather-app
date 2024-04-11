@@ -5,6 +5,12 @@ import 'package:weatherapp/networking/models/forcast.dart';
 enum WeatherType { cloudy, rainy, sunny }
 
 class Utils {
+  
+  // This is a fix because sometimes the API would return a int instead of a double
+  static double getDoubleFromApiResponse(dynamic potentialDouble) {
+    return potentialDouble + 0.0;
+  }
+
   static AssetImage getBackgroundImage(WeatherType weatherType) {
     switch (weatherType) {
       case WeatherType.cloudy:
