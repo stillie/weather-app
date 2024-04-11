@@ -19,10 +19,10 @@ class ForecastWeatherRepository extends ChangeNotifier {
   void getWeatherForcast() async {
     try {
       final locationData = await locationRepo.initLocationData();
-      if (locationData == null) return;
+      
       forcastWeather = await _apiClient.fetchForcastWeather(
-        locationData.latitude ?? 0.0,
-        locationData.longitude ?? 0.0,
+        locationData?.latitude ?? 0.0,
+        locationData?.longitude ?? 0.0,
         useDummyData: true,
       );
       if (forcastWeather == null) throw WeatherRequestFailure();

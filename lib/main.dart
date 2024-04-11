@@ -16,10 +16,17 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<LocationRepository>(
+          create: (context) {
+            return locationRepository;
+          },
+        ),
         ChangeNotifierProvider<WeatherRepository>(
           create: (context) {
             WeatherRepository repository = WeatherRepository(
-                apiClient: apiClient, locationRepo: locationRepository);
+              apiClient: apiClient,
+              locationRepo: locationRepository,
+            );
 
             repository.getWeatherForCurrentLocation();
             return repository;
@@ -29,16 +36,10 @@ void main() async {
           create: (context) {
             ForecastWeatherRepository repository = ForecastWeatherRepository(
                 apiClient: apiClient, locationRepo: locationRepository);
-
             repository.getWeatherForcast();
             return repository;
           },
         ),
-        ChangeNotifierProvider<LocationRepository>(
-          create: (context) {
-            return locationRepository;
-          },
-        )
       ],
       child: const WeatherApp(),
     ),

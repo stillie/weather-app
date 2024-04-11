@@ -15,11 +15,11 @@ class WeatherRepository extends ChangeNotifier {
 
   void getWeatherForCurrentLocation() async {
     final locationData = await locationRepo.initLocationData();
-    if (locationData == null) return;
+    print("Calling current whether ${locationData?.latitude} ${locationData?.longitude} ");
     try {
       currentWeather = await _apiClient.fetchCurrentWeather(
-        locationData.latitude ?? 0,
-        locationData.longitude ?? 0,
+        locationData?.latitude ?? 0,
+        locationData?.longitude ?? 0,
         useDummyData: true,
       );
     } catch (error) {
