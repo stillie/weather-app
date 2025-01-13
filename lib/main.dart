@@ -81,7 +81,7 @@ class ErrorPage extends StatelessWidget {
       appBar: AppBar(),
       body: const Column(
         children: [
-          Text("Please enable Location permssions in System Settings"),
+          Text("Please enable Location permssions in System Settings."),
         ],
       ),
     );
